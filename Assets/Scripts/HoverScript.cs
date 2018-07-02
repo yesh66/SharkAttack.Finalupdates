@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class HoverScript : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+	public AudioSource Sound;
+    
+	private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Swimmer")
         {
             print("Hover collided with " + other.gameObject.tag + " other");
             other.gameObject.GetComponent<SwimmerGlowScript>().TurnOnGlow();
+			//gameObject.GetComponent<AudioSource>().Play();
+			Sound.Play();
         }
     }
 
@@ -19,6 +23,8 @@ public class HoverScript : MonoBehaviour
         {
             print("Hover STOPPED colliding with " + other.gameObject.tag);
             other.gameObject.GetComponent<SwimmerGlowScript>().TurnOffGlow();
+			//gameObject.GetComponent<AudioSource>().Stop();
+			Sound.Stop();
         }
     }
 }

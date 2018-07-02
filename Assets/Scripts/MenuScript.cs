@@ -12,6 +12,7 @@ public class MenuScript : MonoBehaviour {
     public GameObject ExposureSelection;
     public GameObject TimePanel;
     public GameObject TimePanelSelection;
+	public GameObject InstructionsPanel;
     public GameObject SettingsPanel;
     public GameObject EndPanel;
     public GameObject ResetPanel;
@@ -40,6 +41,7 @@ public class MenuScript : MonoBehaviour {
         panels[Constants.UIPanels.ExposureSelection] = ExposureSelection;
         panels[Constants.UIPanels.TimePanel] = TimePanel;
         panels[Constants.UIPanels.TimeSelection] = TimePanelSelection;
+		panels[Constants.UIPanels.InstructionsPanel] = InstructionsPanel;
         panels[Constants.UIPanels.SettingPanel] = SettingsPanel;
         panels[Constants.UIPanels.ResetPanel] = ResetPanel;
         panels[Constants.UIPanels.EndPanel] = EndPanel;

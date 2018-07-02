@@ -116,7 +116,7 @@ public class Manager : MonoBehaviour
 		if (swimmersSpawned) {
 			totalTime += Time.deltaTime;
 			if (totalTime < swimmerShownDuration) {
-				hintText.text = "Memorise the swimmers position";
+				hintText.text = "Remember where the sharks are";
                 cageImage.gameObject.SetActive(false);
 			}
 		}
@@ -139,7 +139,7 @@ public class Manager : MonoBehaviour
 
 			if (cageTimer > totalCageTime && !cagesActive) {
 				print ("unlock cages");
-				hintText.text = "Drag the cages      to capture the sharks";
+				hintText.text = "Drag the cage      to capture the shark";
                 cageImage.gameObject.SetActive(true);
                 cagesActive = true;
 				GlowSphere.GetComponent<GlowScript> ().MakeGlowGreen ();
@@ -198,9 +198,15 @@ public class Manager : MonoBehaviour
 
 	public void PressCageSelectionNext()
 	{
+		UIController.SetTrigger ("ShowInstructions");
+	}
+
+	public void PressInstructionsNext()
+	{
 		UIController.SetTrigger ("PlayGame");
 		startGame ();
 	}
+
 
 	public void PressedReplay()
 	{
@@ -406,6 +412,11 @@ public class Manager : MonoBehaviour
 		SoundController.SetTrigger ("PlayGasp");
 	}
 
+	public void PlayHelp ()
+	{
+		SoundController.SetTrigger ("PlayHelp");
+	}
+
 	public void CageCollided ()
 	{
 		print ("Cage Collided :)");
@@ -466,13 +477,18 @@ public class Manager : MonoBehaviour
 			if (newScore > highScore) {
 				PlayerPrefs.SetInt ("high_score", newScore);
 			}
-			string scoreTextStr = "<color=#00FF00FF>You scored: " + newScore + "</color>";
+			string scoreTextStr = "<color=#00FF00FF>You scored: " + newScore + "</color>" + "<color=#FFFF00FF>\n (Max score:1000)";
+
 			if (PlayerPrefs.HasKey ("prev_score")) {
 				scoreTextStr += "\n\nPrevious score: " + PlayerPrefs.GetInt ("prev_score");
 			}
 			if (PlayerPrefs.HasKey ("high_score")) {
 				scoreTextStr += "\n\nHighest score: " + PlayerPrefs.GetInt ("high_score");
 			}
+				
+
+
+
 			scoreText.text = scoreTextStr;
 			PlayerPrefs.SetInt ("prev_score", newScore);
 			pauseButton.gameObject.SetActive (false);
@@ -487,7 +503,7 @@ public class Manager : MonoBehaviour
            if (currentScore >= 1000)
             {
 
-                totalScoreText.text = "Your score is:" + currentScore + " YOU WIN!";
+                totalScoreText.text = "Total Points Collected:" + currentScore + " YOU WIN!";
             }
          
           //  totalScoreText.text = "Your score is:" + currentScore;

@@ -12,7 +12,7 @@ public static class Constants
         public const string ExposureSelection = "exp_sel";
         public const string TimePanel = "tim_pan";
         public const string TimeSelection = "tim_sel";
-
+		public const string InstructionsPanel = "ins_pan";
         public const string SettingPanel = "set_pan";
         public const string ResetPanel = "res_pan";
         public const string EndPanel = "end_pan";
